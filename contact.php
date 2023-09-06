@@ -3,22 +3,14 @@
  *  CONFIGURE EVERYTHING HERE
  */
 
-
-
 // an email address that will receive the email with the output of the form
 $sendTo = 'contact@jeskei.com';
-
-
-
-
-
 
 // message that will be displayed when everything is OK :)
 $okMessage = 'Contact form successfully submitted. Thank you, I will get back to you soon!';
 
 // If something goes wrong, we will display this message.
 $errorMessage = 'There was an error while submitting the form. Please try again later';
-
 
 /*
  *  LET'S DO THE SENDING
@@ -40,13 +32,9 @@ try {
 	// subject of the email
     $subject = $_POST['name'];
 
-
-
 	$headers = 'From: ' . $from . "\r\n" .
 	           'Reply-To: ' . $sendTo . "\r\n" .
 	           'X-Mailer: PHP/' . phpversion();
-
-
 
 	// Send email
 	mail( $sendTo, $subject, $message, $headers );
@@ -55,7 +43,6 @@ try {
 } catch ( \Exception $e ) {
 	 $responseArray = array('type' => 'danger', 'message' => $errorMessage);
 }
-
 
 // if requested by AJAX request return JSON response
 if ( ! empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' ) {
